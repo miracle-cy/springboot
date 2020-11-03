@@ -1,0 +1,53 @@
+server:
+  port: 8081
+  error:
+    include-exception: true
+    include-message: always
+spring:
+  profiles: default
+  messages:
+    basename: i18n.login
+    #在开发阶段需要关闭缓存，这样在html修改后可以按 ctrl+f9进行动态编译
+  thymeleaf:
+    cache: false
+  mvc:
+    #可以发送put请求的设置开启
+    hiddenmethod:
+      filter:
+        enabled: true
+debug: false
+logging:
+  level:
+    com:
+      faith: trace
+  file:
+    name: springboot.log
+  pattern:
+    console: "%d{yyyy-MM-dd} [%thread] %-5level %logger{50} - %msg%n"
+---
+server:
+  port: 8083
+spring:
+  profiles: dev
+
+---
+server:
+  port: 8084
+spring:
+  profiles: prod
+
+
+
+
+#person:
+#  lastName: 张三
+#  age: 18
+#  boss: false
+#  birth: 2017/12/12
+#  maps: {k1: v1,k2: 12}
+#  lists:
+#    - 李四
+#    - 赵六
+#  dog:
+#    name: 小狗
+#    age: 2
